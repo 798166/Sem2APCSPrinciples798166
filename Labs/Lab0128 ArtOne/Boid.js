@@ -8,7 +8,7 @@ class Boid{
     this.vel = createVector(dx, dy);//velocity vector
     this.acc = createVector(0, 0);//acceleration vector
     this.clr = color(random(0, 255), random(0, 255), random(0, 255), 10);//line color
-    this.id = n;//location of boid in array
+    this.id = n;
   }
   run(){
     this.checkEdges();
@@ -31,21 +31,21 @@ class Boid{
     if(this.loc.y > height){
       this.vel.y = -this.vel.y
       this.loc.y = height;
-    }//makes boids bouce off the edges
+    }
   }//checkEdges end
   update(){
     this.vel.add(this.acc);
     this.loc.add(this.vel);
     this.vel.limit(5);
-    this.acc.x = random(-1, 1);//randomizes acceleration
+    this.acc.x = random(-1, 1);//random acceleration
     this.acc.y = random(-1, 1);
   }//update end
   render(){
     stroke(this.clr);
-    var distToBoid;//creates variable distToBoid
-    for(var i = 0; i < boids.length; i++){//goes through list of boids
+    var distToBoid;//creates s distance variable
+    for(var i = 0; i < boids.length; i++){
       if(i === this.id){}else {//ignores itself
-        distToBoid = this.loc.dist(boids[i].loc);//sets distToBoid to the distance to the selected boid
+        distToBoid = this.loc.dist(boids[i].loc);//sets distance to  selected boid
         if(distToBoid < 100){
           line(this.loc.x, this.loc.y, boids[i].loc.x, boids[i].loc.y);
         }//draws line if boid is within 200 spaces
