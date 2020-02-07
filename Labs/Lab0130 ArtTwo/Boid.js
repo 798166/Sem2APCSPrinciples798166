@@ -16,40 +16,34 @@ class Boid{
     this.render();
   }
   checkEdges(){
-    if(this.loc.x < 0){
-      this.vel.x = -this.vel.x
-      this.loc.x = 0;
+    //bounces of edges
+    if(this.loc.x<0){
+      this.vel.x = -this.vel.x;
     }
-    if(this.loc.x > width){
-      this.vel.x = -this.vel.x
-      this.loc.x = width;
+    if(this.loc.x>width){
+      this.vel.x = -this.vel.x;
     }
-    if(this.loc.y < 0){
-      this.vel.y = -this.vel.y
-      this.loc.y = 0;
+    if(this.loc.y<0){
+      this.vel.y = -this.vel.y;
     }
-    if(this.loc.y > height){
-      this.vel.y = -this.vel.y
-      this.loc.y = height;
+    if(this.loc.y>height){
+      this.vel.y = -this.vel.y;
     }
-  }//checkEdges end
+  }
+
   update(){
-    this.vel.add(this.acc);
-    this.loc.add(this.vel);
-    this.vel.limit(5);
-    this.acc.x = random(-1, 1);//random acceleration
-    this.acc.y = random(-1, 1);
-  }//update end
+    //movement
+    this.loc.x= this.loc.x + this.vel.x;
+    this.loc.y = this.loc.y + this.vel.y;
+  }
   render(){
-    stroke(this.clr);
-    var distToBoid;//creates s distance variable
-    for(var i = 0; i < boids.length; i++){
-      if(i === this.id){}else {//ignores itself
-        distToBoid = this.loc.dist(boids[i].loc);//sets distance to  selected boid
-        if(distToBoid < 100){
-          line(this.loc.x, this.loc.y, boids[i].loc.x, boids[i].loc.y);
-        }//draws line if boid is within 200 spaces
+    //draws lines
+    for (var i=0; i<Boids.length; i++){
+      distance= this.loc.dist(Boids[i].loc);
+      if(distance<50){
+        line(this.loc.x,this.loc.y,Boids[i].loc.x,Boids[i].loc.y)
+        stroke(random(0, 250), random(0, 250),random(0, 250),)
       }
     }
-  }//render end
-}//end boid class
+  }
+}//end Boid class

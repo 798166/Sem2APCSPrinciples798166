@@ -2,28 +2,32 @@
 // 	30 January 2020
 //  This is a comment
 //  The setup function function is called once when your program begins
-var boids = []//array for boids
+var Boids=[];
+
 function setup() {
+  // put setup code here
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(221, 245, 66);
-  fill(221, 245, 66);
-  loadBoids(100);
-
-
+  background(255, 255, 255);
+  fill(200, 30, 150);
+  //loads boids
+  loadBoids(50);
 }
 
-//  The draw function is called @ 30 fps
 function draw() {
+  background(255,255,255);
+  //runs Boids
   runBoids();
 }
+
 function loadBoids(n){
-  for(var i = 0; i < n; i++){
-    boids[i] = new Boid(random(width), random(height), random(-1, 1), random(-1, 1), i);
+  for(var i=0; i<n; i++){
+    Boids[i]= new Boid(random(width), random(height),random(-8,8), random(-8,8));
   }
-}//loads boids in array
+}
+
 function runBoids(){
-  for(var i = 0; i < boids.length; i++){
-    boids[i].run();
+  for(var i=0; i<Boids.length; i++){
+    Boids[i].run();
   }
-}//runs boids
+}
