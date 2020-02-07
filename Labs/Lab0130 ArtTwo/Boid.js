@@ -2,6 +2,8 @@
 // 	0130
 //  This is a comment
 //  The setup function function is called once when your program begins
+
+var distance;
 class Boid{
   constructor(x, y, dx, dy, n){
     this.loc = createVector(x, y);//location vector
@@ -39,11 +41,14 @@ class Boid{
   render(){
     //draws lines
     for (var i=0; i<Boids.length; i++){
-      distance= this.loc.dist(Boids[i].loc);
-      if(distance<50){
+      distance = this.loc.dist(Boids[i].loc);
+      if(distance < 50){
+        line(this.loc.x,this.loc.y,Boids[i].loc.x,Boids[i].loc.y)
+      }
+      if(distance > 50){
         line(this.loc.x,this.loc.y,Boids[i].loc.x,Boids[i].loc.y)
         stroke(random(0, 250), random(0, 250),random(0, 250),)
       }
     }
-  }
+  }//end render
 }//end Boid class
