@@ -11,7 +11,7 @@ function setup() {
   background(255, 255, 255);
   fill(200, 30, 150);
   //loads boids
-  loadBoids(50);
+  loadBoids(45);
 }
 
 function draw() {

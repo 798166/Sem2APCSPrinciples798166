@@ -42,12 +42,12 @@ class Boid{
     //draws lines
     for (var i=0; i<Boids.length; i++){
       distance = this.loc.dist(Boids[i].loc);
-      if(distance < 50){
+      if(distance < 100){
         line(this.loc.x,this.loc.y,Boids[i].loc.x,Boids[i].loc.y)
       }
-      if(distance > 50){
+      if(distance > 30){
         line(this.loc.x,this.loc.y,Boids[i].loc.x,Boids[i].loc.y)
-        stroke(random(0, 250), random(0, 250),random(0, 250),)
+        stroke(random(0, 130), random(0, 200),random(0, 50),)
       }
     }
   }//end render
